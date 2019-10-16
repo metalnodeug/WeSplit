@@ -32,7 +32,15 @@ struct ContentView: View {
         
         return grandTotale
     }
-    
+
+    var colorModifier: Color {
+        if tipPercentage == 4 {
+            return .red
+        } else {
+            return .black
+        }
+    }
+
     var body: some View {
         NavigationView{
             Form{
@@ -59,11 +67,13 @@ struct ContentView: View {
                 Section{
                     Text("Total Amount with tip value")
                     Text("$\(amountWithTip, specifier: "%.2f")")
+                    .foregroundColor(self.colorModifier)
                 }
                 
                 Section{
                     Text("Amount per person")
                     Text("$\(totalPerPerson, specifier: "%.2f")")
+                    .foregroundColor(self.colorModifier)
                 }
             }
             .navigationBarTitle("WeSplit")
